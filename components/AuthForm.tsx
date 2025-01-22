@@ -14,9 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import Link from 'next/link';
 import { FIELD_NAMES, FIELD_TYPES } from '@/constants';
 import ImageUpload from './ImageUpload';
+import { toast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 interface Props<T extends FieldValues>{
   schema: ZodType<T>;
   defaultValues: T;
@@ -24,19 +27,40 @@ interface Props<T extends FieldValues>{
   type:"SIGN_IN" | "SIGN_UP"
 }
 
-
 const AuthForm=<T extends FieldValues>({
   type,
   schema,
   defaultValues,
   onSubmit,
 }:Props<T>) => {
+
+  const router = useRouter();
   const isSignIn = type === "SIGN_IN";
+
   const form:UseFormReturn<T>= useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   })
-  const handleSubmit: SubmitHandler<T>= async(data) =>{};
+
+  const handleSubmit: SubmitHandler<T>= async(data) =>{
+    const result = await onSubmit(data);
+    if(result.success){
+      console.log("Success");
+      toast({
+        title:"Success",
+        description: isSignIn ? "You have successfully signed in":"You have successfully signed up",
+      })
+      router.push("/")
+    }else{
+      console.log(result.error);
+      toast({
+        title:`Error ${isSignIn ? "signing in":"signing up"}`,
+        description: isSignIn ? "Unable to sign in":"Unable to sign up",
+        variant:"destructive",
+      })
+  }
+};
+
   return (
     <div className='flex flex-col gap-4'>
       <h1 className='text-2xl font-semibold text-white'>{isSignIn ? "Welcome back to Bookworm":"Create your library account"}</h1>
@@ -79,5 +103,6 @@ const AuthForm=<T extends FieldValues>({
     
   )
 }
+
 
 export default AuthForm
