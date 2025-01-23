@@ -34,3 +34,8 @@ interface BookParams{
   totalCopies:number;
   description:string;
 }
+
+interface BorrowBookParams{
+  bookId:string;
+  userId: string;
+}

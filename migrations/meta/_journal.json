@@ -15,6 +15,13 @@
       "when": 1737614008573,
       "tag": "0001_wakeful_forgotten_one",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1737619383107,
+      "tag": "0002_wise_jack_flag",
+      "breakpoints": true
     }
   ]
 }
