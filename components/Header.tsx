@@ -2,13 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
-import { Session } from "next-auth"; // Import the Session type
 
-interface HeaderProps {
-  session: Session; // Define the session prop
-}
-
-const Header = ({ session }: HeaderProps) => {
+const Header = () => {
   return (
     <header className="my-10 flex justify-between gap-5">
       <Link href="/">
