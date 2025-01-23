@@ -15,13 +15,14 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { FIELD_NAMES, FIELD_TYPES } from '@/constants';
-import ImageUpload from './ImageUpload';
 import { useRouter } from 'next/navigation';
 import { Book } from '@/types';
 import { bookSchema } from '@/lib/validations';
 import { Textarea } from '@/components/ui/textarea';
 import FileUpload from '@/components/FileUpload';
 import ColorPicker from '../ColorPicker';
+import { createBook } from '@/lib/admin/actions/book';
+import { toast } from '@/hooks/use-toast';
 
 interface Props extends Partial<Book>{
   type?: "create" | "update";
@@ -51,8 +52,21 @@ const BookForm=({
 })
 
 const onSubmit = async(values: z.infer<typeof bookSchema>) => {
-  console.log(values)
-}
+  const result = await createBook(values)
+  if(result.success){
+    toast({
+      title:"Success",
+      description: "Book created succesfully",
+    })
+    router.push(`/admin/books/${result.data.id}`)
+}else{
+  toast({
+    title:"Error",
+    description: result.message,
+    variant:"destructive"
+  })
+}}
+
 
   return (
      <Form {...form}>
