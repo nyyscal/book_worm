@@ -1,9 +1,15 @@
+import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { Session } from "next-auth"; // Ensure this import matches where the Session type is defined
 
-const Header = () => {
+interface HeaderProps {
+  session: Session;
+}
+
+const Header: FC<HeaderProps> = ({ session }) => {
   return (
     <header className="my-10 flex justify-between gap-5">
       <Link href="/">
@@ -15,13 +21,15 @@ const Header = () => {
           <form
             action={async () => {
               "use server";
-
               await signOut();
             }}
             className="mb-10"
           >
             <Button>Logout</Button>
           </form>
+        </li>
+        <li>
+          <span>Welcome, {session?.user?.name}</span>
         </li>
       </ul>
     </header>
