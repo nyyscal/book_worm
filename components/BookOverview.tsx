@@ -3,10 +3,19 @@ import React from 'react'
 import { Button } from './ui/button'
 import BookCover from './BookCover'
 
-const BookOverview = ({title,author,genre,rating,total_copies,available_copies,description,color,cover}:Book) => {
+const BookOverview = ({
+  title,
+  author,
+  genre,
+  rating,
+  totalCopies,
+  availableCopies,
+  description,
+  coverColor,
+  coverUrl}:Book) => {
   return (
     <section className='book-overview'>
-      <div className='flex flex-1 flex-col gap-5'>
+      <div className='flex flex-1 flex-col gap-5'>        
         <h1>{title}</h1>
         <div className='book-info'>
           <p>By <span className='font-semibold text-light-200'>{author}</span></p>
@@ -17,8 +26,8 @@ const BookOverview = ({title,author,genre,rating,total_copies,available_copies,d
           </div>
         </div>
         <div className='book-copies'>
-          <p>Total Books: <span>{total_copies}</span></p>
-          <p>Available Books: <span>{available_copies}</span></p>
+          <p>Total Books: <span>{totalCopies}</span></p>
+          <p>Available Books: <span>{availableCopies}</span></p>
         </div>  
         <p className='book-description'>{description}</p>
         <Button className='book-overview_btn'>
@@ -31,13 +40,13 @@ const BookOverview = ({title,author,genre,rating,total_copies,available_copies,d
           <BookCover 
           variant="wide" 
           className="z-10" 
-          coverColor={color} 
-          coverImage={cover}/>
+          coverColor={coverColor} 
+          coverImage={coverUrl}/>
           <div className='absolute left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
             <BookCover 
             variant="wide" 
-            coverColor={color} 
-            coverImage={cover}/>
+            coverColor={coverColor} 
+            coverImage={coverUrl}/>
             </div>
         </div>
       </div>

@@ -1,17 +1,17 @@
 interface Book{
-  id:number;
+  id:string;
   title:string;
   author:string;
   genre:string;
   rating:number;
-  total_copies:number;
-  available_copies:number;
+  totalCopies:number;
+  availableCopies:number;
   description:string;
-  color:string;
-  video:string;
+  coverColor:string;
+  coverUrl:string;
+  videoUrl:string;
   summary:string;
-  isLoanedBook?:boolean;
-  cover:string;
+  createdAt:Date|null;
 }
 
 interface AuthCredentials{
@@ -33,5 +33,4 @@ interface BookParams{
   summary:string;
   totalCopies:number;
   description:string;
-
 }
