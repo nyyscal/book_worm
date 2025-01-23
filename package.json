@@ -9,7 +9,8 @@
     "lint": "next lint",
     "db:generate": "npx drizzle-kit generate",
     "db:migrate": "npx drizzle-kit migrate",
-    "db:studio": "npx drizzle-kit studio"
+    "db:studio": "npx drizzle-kit studio",
+    "seed":"npx tsx database/seed.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
