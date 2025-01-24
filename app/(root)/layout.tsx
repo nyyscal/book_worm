@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Header from "@/components/Header";
-import { useSession } from "next-auth/react"; // For next-auth
+import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { after } from "next/server";
 import { db } from "@/database/drizzle";
@@ -8,7 +8,7 @@ import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
-  const { data: session } = useSession(); // Use useSession() for next-auth
+  const session = await auth();
 
   if (!session) redirect("/sign-in");
 
