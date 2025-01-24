@@ -28,9 +28,8 @@ const Header: FC<HeaderProps> = ({ session }) => {
             <Button>Logout</Button>
           </form>
         </li>
-        <li>
-          <span>Welcome, {session?.user?.name}</span>
-        </li>
+          <span className="text-slate-200 mb-10 font-bold">{session?.user?.name}</span>
+
       </ul>
     </header>
   );
