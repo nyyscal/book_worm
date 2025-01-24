@@ -1,6 +1,5 @@
 "use client"
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import React from 'react'
 import BookCoverSvg from './BookCoverSvg';
 import { IKImage } from 'imagekitio-next';

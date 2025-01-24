@@ -1,5 +1,4 @@
 import { auth } from '@/auth'
-import BookList from '@/components/BookList'
 import BookOverview from '@/components/BookOverview'
 import BookVideo from '@/components/BookVideo'
 import { db } from '@/database/drizzle'

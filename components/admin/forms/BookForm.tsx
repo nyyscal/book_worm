@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { FIELD_NAMES, FIELD_TYPES } from '@/constants';
 import { useRouter } from 'next/navigation';
-import { Book } from '@/types';
 import { bookSchema } from '@/lib/validations';
 import { Textarea } from '@/components/ui/textarea';
 import FileUpload from '@/components/FileUpload';

@@ -7,7 +7,6 @@ import { hash } from "bcryptjs";
 import { signIn } from "@/auth";
 import { headers } from "next/headers";
 import ratelimit from "../ratelimit";
-import { redirect } from "next/navigation";
 
 export const signInWithCredentials = async (
   params: Pick<AuthCredentials, "email" | "password">
