@@ -15,7 +15,10 @@ const {
 
 const authenticator = async () => {
   try {
-    const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
+    // Use full URL for production and local
+    const apiUrl = window.location.origin + '/api/auth/imagekit';
+    const response = await fetch(apiUrl);
+    
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(`Request failed with status ${response.status}: ${errorText}`);
