@@ -43,7 +43,7 @@ const BookOverview = async({
         </div>
         <div className='book-copies'>
           <p>Total Books: <span>{totalCopies}</span></p>
-          <p>Available Books: <span>{availableCopies}</span></p>
+          <p>Available Books: <span>{availableCopies}s</span></p>
         </div>  
         <p className='book-description'>{description}</p>
         <BorrowButton 
